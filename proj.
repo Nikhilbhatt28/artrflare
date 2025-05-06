@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtFlare Gallery</title>
+  <style>
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }/* Gallery Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 4px solid #fff;
+  border-radius: 8px;
+}
+.modal.open {
+  display: flex;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+  </style>
+</head>
+<body> 
+  <header>
+    <h1>ArtFlare</h1>
+    <p>Showcase Your Drawings & Sketches</p>
+  </header>  <main>
+    <section class="gallery">
+      
+      <div class="gallery-item"><img src="https://images.indianexpress.com/2022/09/WhatsApp-Image-2022-09-05-at-2.05.03-PM.jpeg" alt="Drawing 1"></div>
+      <div class="gallery-item"><img src="https://s.yimg.com/ny/api/res/1.2/89tFeMFmd5tjbfTdWnjEew--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/en/news_and_star_893/0892fc773ab04a8441b7aa0fd9759b72" alt="Drawing 2"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUaE8znmZFym2k3YRzQaio697WrvKV8UYEQA&s" alt="Drawing 3"></div>
+
+<!-- Add more items as needed -->
+    </section><!-- Image Modal -->
+<div class="modal" id="imgModal">
+  <img src="" alt="Enlarged Drawing" id="modalImg">
+</div>
+
+  </main>  <footer>
+    &copy; 2025 ArtFlare. All rights reserved.
+  </footer>  <script>
+    // Scroll-in Animation
+    const items = document.querySelectorAll('.gallery-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(item => observer.observe(item));
+
+    // Modal Logic
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modal.classList.add('open');
+      });
+    });
+    modal.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
+  </script></body>
+</html>
