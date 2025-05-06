@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,92 +27,100 @@
     header h1 {
       font-size: 2rem;
       letter-spacing: 2px;
-    }/* Gallery Grid */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.gallery-item {
-  overflow: hidden;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.gallery-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.gallery-item img {
-  width: 100%;
-  display: block;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-.gallery-item img:hover {
-  transform: scale(1.05);
-}
+    }
 
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-.modal img {
-  max-width: 90%;
-  max-height: 90%;
-  border: 4px solid #fff;
-  border-radius: 8px;
-}
-.modal.open {
-  display: flex;
-}
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #222;
-  color: #fff;
-  margin-top: 2rem;
-}
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 4px solid #fff;
+      border-radius: 8px;
+    }
+    .modal.open {
+      display: flex;
+    }
 
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: #fff;
+      margin-top: 2rem;
+    }
   </style>
 </head>
-<body> 
+<body>
   <header>
     <h1>ArtFlare</h1>
     <p>Showcase Your Drawings & Sketches</p>
-  </header>  <main>
+  </header>
+
+  <main>
     <section class="gallery">
-      
-      <div class="gallery-item"><img src="https://images.indianexpress.com/2022/09/WhatsApp-Image-2022-09-05-at-2.05.03-PM.jpeg" alt="Drawing 1"></div>
-      <div class="gallery-item"><img src="https://s.yimg.com/ny/api/res/1.2/89tFeMFmd5tjbfTdWnjEew--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/en/news_and_star_893/0892fc773ab04a8441b7aa0fd9759b72" alt="Drawing 2"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPgTmTFIGGc34H0d4_n3xgjfrEDCm2gH1Jyw&s" alt="Drawing 1"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNZuRAqZi7lGKbuFdz4hdH43x1NHuuimDsKA&s" alt="Drawing 2"></div>
       <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUaE8znmZFym2k3YRzQaio697WrvKV8UYEQA&s" alt="Drawing 3"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlxheDpj20GH_N3C5ggJt7gwkeZ5XGIvPyqQ&s" alt="Drawing 4"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp6p1SIWsgnDCXOZyTFDQN9u94OR3vthfpHg&s" alt="Drawing 5"></div>
+      <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKjf-Yy7Z9p81f85HvVN3fQQl7dJbtsF4XA&s" alt="Drawing 6"></div>
+    </section>
 
-<!-- Add more items as needed -->
-    </section><!-- Image Modal -->
-<div class="modal" id="imgModal">
-  <img src="" alt="Enlarged Drawing" id="modalImg">
-</div>
+    <!-- Image Modal -->
+    <div class="modal" id="imgModal">
+      <img src="" alt="Enlarged Drawing" id="modalImg">
+    </div>
+  </main>
 
-  </main>  <footer>
+  <footer>
     &copy; 2025 ArtFlare. All rights reserved.
-  </footer>  <script>
+  </footer>
+
+  <script>
     // Scroll-in Animation
     const items = document.querySelectorAll('.gallery-item');
     const observer = new IntersectionObserver((entries) => {
@@ -137,5 +146,6 @@ footer {
     modal.addEventListener('click', () => {
       modal.classList.remove('open');
     });
-  </script></body>
+  </script>
+</body>
 </html>
